@@ -6,13 +6,17 @@ import {
   Title,
 } from "./styles";
 
-export function InfoBar() {
+interface InfoBarProps {
+  tasksCreated: number;
+}
+
+export function InfoBar({ tasksCreated }: InfoBarProps) {
   return (
     <InfoBarContainer>
       <TaskStatus>
         <Title style={{ color: "#4EA8DE" }}>Criadas</Title>
         <NumberContainer>
-          <Number>0</Number>
+          <Number>{tasksCreated}</Number>
         </NumberContainer>
       </TaskStatus>
 

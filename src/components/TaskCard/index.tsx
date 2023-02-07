@@ -1,6 +1,7 @@
-import { Feather, AntDesign } from "@expo/vector-icons";
 import { useState } from "react";
 import { TouchableOpacity } from "react-native";
+import { Feather, AntDesign } from "@expo/vector-icons";
+
 import {
   CheckBox,
   TaskCardContainer,

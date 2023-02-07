@@ -1,7 +1,12 @@
+import { useState } from "react";
+import { Alert, FlatList } from "react-native";
+
 import { Header } from "../../components/Header";
-import { AntDesign, Feather } from "@expo/vector-icons";
 import { InfoBar } from "../../components/InfoBar";
 import { TaskCard } from "../../components/TaskCard";
+
+import { AntDesign, Feather } from "@expo/vector-icons";
+
 import {
   Button,
   Divisor,
@@ -13,8 +18,6 @@ import {
   Input,
   InputContainer,
 } from "./styles";
-import { useState } from "react";
-import { Alert, FlatList } from "react-native";
 
 export function Home() {
   const [tasks, setTasks] = useState<string[]>([]);
@@ -55,17 +58,17 @@ export function Home() {
             value={description}
             onChangeText={(description) => setDescription(description)}
           />
-          <Button onPress={handleCreateTask}>
+          <Button onPress={handleCreateTask} disabled={description === ""}>
             <AntDesign name="pluscircleo" size={16} color="white" />
           </Button>
         </InputContainer>
 
-        <InfoBar />
+        <InfoBar tasksCreated={tasks.length} />
         <Divisor />
 
         <FlatList
           data={tasks}
-          keyExtractor={(index) => index}
+          keyExtractor={(item) => item}
           renderItem={({ item, index }) => (
             <TaskCard
               taskDescription={item}
