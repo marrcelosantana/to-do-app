@@ -8,7 +8,11 @@ import {
   TaskSelect,
 } from "./styles";
 
-export function TaskCard() {
+interface TaskCardProps {
+  taskDescription: string;
+}
+
+export function TaskCard({ taskDescription }: TaskCardProps) {
   const [checked, setChecked] = useState(false);
 
   function check() {
@@ -23,7 +27,7 @@ export function TaskCard() {
             <AntDesign name="checkcircle" size={13.8} color="#5E60CE" />
           )}
         </CheckBox>
-        <TaskDescription>Primeira atividade com descrição.</TaskDescription>
+        <TaskDescription>{taskDescription}</TaskDescription>
       </TaskSelect>
       <TouchableOpacity>
         <Feather name="trash-2" size={16} color="white" />

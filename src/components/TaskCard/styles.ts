@@ -8,6 +8,7 @@ export const TaskCardContainer = styled.View`
   background-color: ${(props) => props.theme.colors["gray-400"]};
   border-radius: 8px;
   height: 54px;
+  margin-bottom: 10px;
 `;
 
 export const TaskSelect = styled.View`

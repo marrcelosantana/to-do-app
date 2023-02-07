@@ -42,3 +42,19 @@ export const Divisor = styled.View`
   border: 1px solid ${(props) => props.theme.colors["gray-400"]};
   margin-bottom: 32px;
 `;
+
+export const EmptyList = styled.View`
+  align-items: center;
+  justify-content: center;
+`;
+
+export const EmptyListTitle = styled.Text`
+  margin-top: 20px;
+  font-weight: bold;
+  color: ${(props) => props.theme.colors["gray-300"]};
+`;
+
+export const EmptyListSubtitle = styled.Text`
+  color: ${(props) => props.theme.colors["gray-300"]};
+  font-size: 12px;
+`;
