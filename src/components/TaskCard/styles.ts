@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { StyleSheet } from "react-native";
 
 export const TaskCardContainer = styled.View`
   flex-direction: row;
@@ -31,3 +32,19 @@ export const TaskDescription = styled.Text`
   font-size: 12px;
   margin-left: 10px;
 `;
+
+export const styles = StyleSheet.create({
+  description: {
+    color: "#fff",
+    fontSize: 13,
+    marginLeft: 10,
+    textDecoration: "none",
+  },
+
+  descriptionChecked: {
+    fontSize: 13,
+    marginLeft: 10,
+    textDecoration: "line-through",
+    color: "#808080",
+  },
+});
