@@ -14,10 +14,4 @@ export const defaultTheme = {
     "gray-200": "#D9D9D9",
     "gray-100": "#F2F2F2",
   },
-
-  fonts: {
-    regular: "Inter_400Regular",
-    medium: "Inter_500Medium",
-    bold: "Inter_700Bold",
-  },
 } as const;
