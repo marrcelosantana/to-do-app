@@ -20,8 +20,8 @@ export const Title = styled.Text`
 
 export const NumberContainer = styled.View`
   background-color: ${(props) => props.theme.colors["gray-400"]};
-  padding: 2px 4px;
-  border-radius: 9999;
+  padding: 0 5px;
+  border-radius: 9999px;
   align-items: center;
   justify-content: center;
 `;

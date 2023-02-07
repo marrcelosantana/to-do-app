@@ -39,6 +39,6 @@ export const Button = styled.TouchableOpacity`
 export const Divisor = styled.View`
   margin-top: 16px;
   width: 100%;
-  border: 0.5px solid ${(props) => props.theme.colors.white};
-  margin-bottom: 16px;
+  border: 1px solid ${(props) => props.theme.colors["gray-400"]};
+  margin-bottom: 32px;
 `;

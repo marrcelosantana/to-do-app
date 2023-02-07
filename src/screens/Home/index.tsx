@@ -1,5 +1,7 @@
 import { Header } from "../../components/Header";
 import { AntDesign } from "@expo/vector-icons";
+import { InfoBar } from "../../components/InfoBar";
+import { TaskCard } from "../../components/TaskCard";
 import {
   Button,
   Divisor,
@@ -8,7 +10,6 @@ import {
   Input,
   InputContainer,
 } from "./styles";
-import { InfoBar } from "../../components/InfoBar";
 
 export function Home() {
   return (
@@ -28,6 +29,8 @@ export function Home() {
 
         <InfoBar />
         <Divisor />
+
+        <TaskCard />
       </HomeContent>
     </HomeContainer>
   );
