@@ -9,14 +9,17 @@ import {
 } from "./styles";
 
 interface TaskCardProps {
+  id: number;
   taskDescription: string;
+  onDelete: (id: number) => void;
 }
 
-export function TaskCard({ taskDescription }: TaskCardProps) {
+export function TaskCard({ id, taskDescription, onDelete }: TaskCardProps) {
   const [checked, setChecked] = useState(false);
 
   function check() {
     setChecked(!checked);
+    console.log(id);
   }
 
   return (
@@ -29,7 +32,7 @@ export function TaskCard({ taskDescription }: TaskCardProps) {
         </CheckBox>
         <TaskDescription>{taskDescription}</TaskDescription>
       </TaskSelect>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => onDelete(id)}>
         <Feather name="trash-2" size={16} color="white" />
       </TouchableOpacity>
     </TaskCardContainer>

@@ -14,7 +14,7 @@ import {
   InputContainer,
 } from "./styles";
 import { useState } from "react";
-import { FlatList } from "react-native";
+import { Alert, FlatList } from "react-native";
 
 export function Home() {
   const [tasks, setTasks] = useState<string[]>([]);
@@ -25,7 +25,23 @@ export function Home() {
     setDescription("");
   }
 
-  function handleDeleteTask() {}
+  function handleDeleteTask(id: number) {
+    Alert.alert("Remover", `Deseja remover a task de número: ${id}?`, [
+      {
+        text: "Sim",
+        onPress: () =>
+          setTasks((prevState) =>
+            prevState.filter((task, index) => {
+              return index !== id;
+            })
+          ),
+      },
+      {
+        text: "Não",
+        style: "cancel",
+      },
+    ]);
+  }
 
   return (
     <HomeContainer>
@@ -51,7 +67,12 @@ export function Home() {
           data={tasks}
           keyExtractor={(index) => index}
           renderItem={({ item, index }) => (
-            <TaskCard taskDescription={item} key={index} />
+            <TaskCard
+              taskDescription={item}
+              key={index}
+              id={index}
+              onDelete={handleDeleteTask}
+            />
           )}
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={() => (
