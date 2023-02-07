@@ -13,10 +13,14 @@ interface TaskCardProps {
 export function TaskCard({ id, taskDescription, onDelete }: TaskCardProps) {
   const [checked, setChecked] = useState(false);
 
+  function handleCheck() {
+    setChecked(!checked);
+  }
+
   return (
     <TaskCardContainer>
       <TaskSelect>
-        <CheckBox onPress={() => setChecked(!checked)}>
+        <CheckBox onPress={handleCheck}>
           {checked === true && (
             <AntDesign name="checkcircle" size={13.8} color="#5E60CE" />
           )}
