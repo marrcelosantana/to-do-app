@@ -1,10 +1,9 @@
-import { View, Text } from "react-native";
-import { styles } from "./styles";
+import { Container, Title } from "./styles";
 
 export function Home() {
   return (
-    <View style={styles.container}>
-      <Text>Hello world</Text>
-    </View>
+    <Container>
+      <Title>Hello world</Title>
+    </Container>
   );
 }
