@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const HomeContainer = styled.View`
   flex: 1;
-  background-color: ${(props) => props.theme.colors["gray-400"]};
+  background-color: ${(props) => props.theme.colors["gray-600"]};
 `;
 
 export const HomeContent = styled.View`
@@ -34,4 +34,11 @@ export const Button = styled.TouchableOpacity`
   justify-content: center;
   border-radius: 6px;
   background-color: ${(props) => props.theme.colors["blue-dark"]};
+`;
+
+export const Divisor = styled.View`
+  margin-top: 16px;
+  width: 100%;
+  border: 0.5px solid ${(props) => props.theme.colors.white};
+  margin-bottom: 16px;
 `;
