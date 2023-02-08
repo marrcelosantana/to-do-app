@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Text, TouchableOpacity } from "react-native";
 import { Task } from "../../models/Task";
 import { Feather, AntDesign } from "@expo/vector-icons";
