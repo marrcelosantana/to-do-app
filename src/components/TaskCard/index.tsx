@@ -1,32 +1,30 @@
 import { useState } from "react";
 import { Text, TouchableOpacity } from "react-native";
+import { Task } from "../../models/Task";
 import { Feather, AntDesign } from "@expo/vector-icons";
 
 import { CheckBox, styles, TaskCardContainer, TaskSelect } from "./styles";
 
 interface TaskCardProps {
   id: number;
-  taskDescription: string;
+  task: Task;
   onDelete: (id: number) => void;
+  onCheck: (id: number) => void;
 }
 
-export function TaskCard({ id, taskDescription, onDelete }: TaskCardProps) {
-  const [checked, setChecked] = useState(false);
-
-  function handleCheck() {
-    setChecked(!checked);
-  }
-
+export function TaskCard({ id, task, onDelete, onCheck }: TaskCardProps) {
   return (
     <TaskCardContainer>
       <TaskSelect>
-        <CheckBox onPress={handleCheck}>
-          {checked === true && (
+        <CheckBox onPress={() => onCheck(id)}>
+          {task.checked === true && (
             <AntDesign name="checkcircle" size={13.8} color="#5E60CE" />
           )}
         </CheckBox>
-        <Text style={checked ? styles.descriptionChecked : styles.description}>
-          {taskDescription}
+        <Text
+          style={task.checked ? styles.descriptionChecked : styles.description}
+        >
+          {task.description}
         </Text>
       </TaskSelect>
       <TouchableOpacity onPress={() => onDelete(id)}>

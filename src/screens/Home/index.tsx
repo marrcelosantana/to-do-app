@@ -4,6 +4,7 @@ import { Alert, FlatList } from "react-native";
 import { Header } from "../../components/Header";
 import { InfoBar } from "../../components/InfoBar";
 import { TaskCard } from "../../components/TaskCard";
+import { Task } from "../../models/Task";
 
 import { AntDesign, Feather } from "@expo/vector-icons";
 
@@ -20,12 +21,41 @@ import {
 } from "./styles";
 
 export function Home() {
-  const [tasks, setTasks] = useState<string[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [description, setDescription] = useState("");
+  const [checked, setChecked] = useState(false);
 
   function handleCreateTask() {
-    setTasks([...tasks, description]);
+    const data = {
+      description: description,
+      checked: false,
+    };
+
+    setTasks([...tasks, data]);
     setDescription("");
+  }
+
+  function findCheckeds() {
+    let checkeds = [];
+
+    tasks.filter((task) => {
+      if (task.checked === true) {
+        checkeds.push(task);
+      }
+    });
+
+    return checkeds.length;
+  }
+
+  function handleCheckTask(id: number) {
+    const newTasks = tasks.map((item, index) => {
+      if (index === id) {
+        item.checked = !item.checked;
+      }
+      return item;
+    });
+
+    setTasks(newTasks);
   }
 
   function handleDeleteTask(id: number) {
@@ -63,18 +93,19 @@ export function Home() {
           </Button>
         </InputContainer>
 
-        <InfoBar tasksCreated={tasks.length} />
+        <InfoBar tasksCreated={tasks.length} tasksChecked={findCheckeds} />
         <Divisor />
 
         <FlatList
           data={tasks}
-          keyExtractor={(item) => item}
+          keyExtractor={(item) => item.description}
           renderItem={({ item, index }) => (
             <TaskCard
-              taskDescription={item}
+              task={item}
               key={index}
               id={index}
               onDelete={handleDeleteTask}
+              onCheck={handleCheckTask}
             />
           )}
           showsVerticalScrollIndicator={false}

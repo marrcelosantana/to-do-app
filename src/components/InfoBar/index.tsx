@@ -8,9 +8,10 @@ import {
 
 interface InfoBarProps {
   tasksCreated: number;
+  tasksChecked: () => number;
 }
 
-export function InfoBar({ tasksCreated }: InfoBarProps) {
+export function InfoBar({ tasksCreated, tasksChecked }: InfoBarProps) {
   return (
     <InfoBarContainer>
       <TaskStatus>
@@ -23,7 +24,7 @@ export function InfoBar({ tasksCreated }: InfoBarProps) {
       <TaskStatus>
         <Title style={{ color: "#8284FA" }}>Concluídas</Title>
         <NumberContainer>
-          <Number>0</Number>
+          <Number>{tasksChecked()}</Number>
         </NumberContainer>
       </TaskStatus>
     </InfoBarContainer>

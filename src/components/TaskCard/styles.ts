@@ -38,13 +38,11 @@ export const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 13,
     marginLeft: 10,
-    textDecoration: "none",
   },
 
   descriptionChecked: {
     fontSize: 13,
     marginLeft: 10,
-    textDecoration: "line-through",
     color: "#808080",
   },
 });
