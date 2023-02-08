@@ -18,7 +18,7 @@ export function TaskCard({ id, task, onDelete, onCheck }: TaskCardProps) {
       <TaskSelect>
         <CheckBox onPress={() => onCheck(id)}>
           {task.checked === true && (
-            <AntDesign name="checkcircle" size={13.8} color="#5E60CE" />
+            <AntDesign name="checkcircle" size={14} color="#5E60CE" />
           )}
         </CheckBox>
         <Text

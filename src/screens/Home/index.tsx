@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Alert, FlatList } from "react-native";
+import { Alert, FlatList, Keyboard } from "react-native";
 
 import { Header } from "../../components/Header";
 import { InfoBar } from "../../components/InfoBar";
@@ -23,7 +23,6 @@ import {
 export function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [description, setDescription] = useState("");
-  const [checked, setChecked] = useState(false);
 
   function handleCreateTask() {
     const data = {
@@ -33,18 +32,12 @@ export function Home() {
 
     setTasks([...tasks, data]);
     setDescription("");
+    Keyboard.dismiss();
   }
 
-  function findCheckeds() {
-    let checkeds = [];
-
-    tasks.filter((task) => {
-      if (task.checked === true) {
-        checkeds.push(task);
-      }
-    });
-
-    return checkeds.length;
+  function findTasksCheckeds() {
+    const taskCheckeds = tasks.filter((task) => task.checked === true);
+    return taskCheckeds.length;
   }
 
   function handleCheckTask(id: number) {
@@ -54,12 +47,11 @@ export function Home() {
       }
       return item;
     });
-
     setTasks(newTasks);
   }
 
   function handleDeleteTask(id: number) {
-    Alert.alert("Remover", `Deseja remover a task de número: ${id}?`, [
+    Alert.alert("Remover", `Deseja remover a task selecionada?`, [
       {
         text: "Sim",
         onPress: () =>
@@ -93,7 +85,7 @@ export function Home() {
           </Button>
         </InputContainer>
 
-        <InfoBar tasksCreated={tasks.length} tasksChecked={findCheckeds} />
+        <InfoBar tasksCreated={tasks.length} tasksChecked={findTasksCheckeds} />
         <Divisor />
 
         <FlatList
